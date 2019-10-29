@@ -7,9 +7,10 @@
 </head>
 
 <body>
-  <div class="container">
-    <h1>Select your favorite animal</h1>
-    <h2>and write why it is your favorite</h2>
+  <h1>Select your favorite animal</h1>
+  <h2>and write why it is your favorite</h2>
+  
+  <form>
     <ul>
       <li>
         <input type="radio" name="animal" value="bird">Bird<br>
@@ -24,10 +25,24 @@
         <input type="radio" name="animal" value="other">Other (explain below)<br>
       </li>
     </ul>
-    Explain: <input type="text" name="explain"><br>
-    <input type="submit" value="Submit">
-    <input type="reset" value="Clear">
-  </div>
+    Explain: <input type="text" name="explain" id="text"><br>
+    <input type="submit" value="Submit" id="submit">
+    <input type="reset" value="Clear" id="clear">
+  </form>
+  
+  <ul id="fave_list"></ul>
+  
+  <script>
+    function main () {
+      const addButton = document.getElementById('submit');
+      addButton.addEventListener('click', add);
+    }
+    function getFormInfo () {
+      const faveAnimal = document.querySelector('input[name="animal"]:checked').value;
+    }
+    window.onload = main;
+  </script>
+  
 </body>
 
 </html>
