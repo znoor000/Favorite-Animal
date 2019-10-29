@@ -50,6 +50,7 @@
       const newThing = document.createElement('li');
       
       newThing.appendChild(document.createTextNode(output));
+      output.appendChild(newThing);
     }
     
     window.onload = main;
