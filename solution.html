@@ -47,10 +47,22 @@
       e.preventDefault();
       [faveAnimal, reason] = getFormInfo();
       const output = document.getElementById("fave-list");
-      const newThing = document.createElement('li');
+      const newLi = document.createElement('li');
+      const closeIcon = document.createElement('span');
       
-      newThing.appendChild(document.createTextNode(faveAnimal));
-      output.appendChild(newThing);
+      newLi.appendChild(document.createTextNode(faveAnimal+" "+reason+"\n"));
+      closeIcon.appendChild(document.createTextNode("\u274e"));
+      newLi.appendChild(closeIcon);
+      output.appendChild(newLi);
+      
+      closeIcon.addEventListener(
+        'click',
+        ()=>{
+          while(newLi.firstChild)
+            newLi.removeChild(newLi.firstChild);
+          output.removeChild(newLi);
+        }
+      );
     }
     
     window.onload = main;
