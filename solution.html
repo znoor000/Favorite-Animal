@@ -25,21 +25,33 @@
         <input type="radio" name="animal" value="other">Other (explain below)<br>
       </li>
     </ul>
-    Explain: <input type="text" name="explain" id="text"><br>
+    Explain: <input type="text" name="explain" id="reasoning"><br>
     <input type="submit" value="Submit" id="submit">
     <input type="reset" value="Clear" id="clear">
   </form>
   
-  <ul id="fave_list"></ul>
+  <ul id="fave-list"></ul>
   
   <script>
-    function main () {
+    function main() {
       const addButton = document.getElementById('submit');
       addButton.addEventListener('click', add);
     }
-    function getFormInfo () {
+    function getFormInfo() {
       const faveAnimal = document.querySelector('input[name="animal"]:checked').value;
+      const reason = document.getElementById("reasoning").value;
+      document.getElementById("reasoning").value = "";
+      return [faveAnimal, reason];
     }
+    function add(e) {
+      e.preventDefault();
+      [faveAnimal, reason] = getFormInfo();
+      const output = document.getElementById("fave-list");
+      const newThing = document.createElement('li');
+      
+      newThing.appendChild(document.createTextNode(output));
+    }
+    
     window.onload = main;
   </script>
   
